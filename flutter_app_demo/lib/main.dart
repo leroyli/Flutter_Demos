@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         home: const MyHomePage(title: 'Flutter Demo Home Page'),
         routes: {
           "gitlist": (context) => const FutureBuilderRoute(),
-          "list": (context) => const ListPage(),
+          "list": (context) => ListPage(),
         });
   }
 }

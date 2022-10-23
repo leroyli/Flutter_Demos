@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';
 
+// ignore: must_be_immutable
 class ListPage extends StatelessWidget {
-  const ListPage({
+  ListPage({
     Key? key,
   }) : super(key: key);
+
+  List<Map> imageList = [
+    {"url": "http://www.itying.com/images/flutter/1.png"},
+    {"url": "http://www.itying.com/images/flutter/2.png"},
+    {"url": "http://www.itying.com/images/flutter/3.png"},
+    {"url": "http://www.itying.com/images/flutter/4.png"}
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +28,21 @@ class ListPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
+              SizedBox(
+                height: 200,
+                child: Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Image.network(
+                      imageList[index]["url"],
+                      fit: BoxFit.fill,
+                    );
+                  },
+                  itemCount: imageList.length,
+                  autoplay: true,
+                  pagination:
+                      const SwiperPagination(alignment: Alignment.bottomCenter),
+                ),
+              ),
               const Text("list_page"),
               ElevatedButton(
                 onPressed: () {
